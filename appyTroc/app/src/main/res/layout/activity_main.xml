@@ -11,22 +11,9 @@
     tools:context="fr.lille.iut.appytroc.MainActivity"
     android:orientation="vertical"
     >
-
-
-    <Button
-        android:id="@+id/createAccount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Create account"
-
-        android:layout_above="@+id/login"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="10dp"
-        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/createAccount"
         android:orientation="vertical"
 
         >
@@ -40,11 +27,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Passwd *****"
+            android:inputType="textPassword"
+            />
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:id="@+id/createAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create account"
+
             />
 
 
-
-
     </LinearLayout>
+
 </RelativeLayout>
 

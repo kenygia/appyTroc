@@ -32,10 +32,10 @@ public class MainActivity extends AppCompatActivity {
         longin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(enterUserID.getText().toString().isEmpty() || enterUserID.getText().length()<4) {
-                    enterUserID.setError( "A Login is required!" );
-                } else if (enterPasswd.getText().toString().isEmpty() || enterPasswd.getText().length()<4) {
-                    enterPasswd.setError("A Password is required!");
+                if(enterUserID.getText().toString().isEmpty() || (enterUserID.getText().length()<4 && enterUserID.getText().length()<100)) {
+                    enterUserID.setError( "A Login is required! min 5 char and max 99" );
+                } else if (enterPasswd.getText().toString().isEmpty() || (enterPasswd.getText().length()<4 && enterPasswd.getText().length()<64)) {
+                    enterPasswd.setError("A Password is required! min 5 char");
                 } else {
 
                 }

@@ -16,10 +16,10 @@ import java.util.List;
  * Created by thibault on 29/03/2017.
  */
 
-public class AdapteurOffer extends ArrayAdapter<Offer> {
+public class AdapterOffer extends ArrayAdapter<Offer> {
 
     //tweets est la liste des models à afficher
-    public AdapteurOffer(Context context, List<Offer> Offers) {
+    public AdapterOffer(Context context, List<Offer> Offers) {
         super(context, 0, Offers);
     }
 

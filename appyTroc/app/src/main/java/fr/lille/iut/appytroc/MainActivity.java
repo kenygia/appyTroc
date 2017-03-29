@@ -21,13 +21,26 @@ public class MainActivity extends AppCompatActivity {
         createUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,InscriptionActivity.class);
-                MainActivity.this.startActivity(intent);
+                Intent intent = new Intent(MainActivity.this,test.class);
+                MainActivity.this.startActivityForResult(intent,1);
             }
         });
         longin = (Button) findViewById(R.id.login);
         enterPasswd = (EditText) findViewById(R.id.enterPasswd);
         enterUserID = (EditText) findViewById(R.id.enterID);
+
+        longin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(enterUserID.getText().toString().equals("") && enterUserID.getText().length()<4) {
+                    enterUserID.setError( "A Login is required!" );
+                } else if (enterPasswd.getText().toString().equals("") && enterPasswd.getText().length()<4) {
+                    enterPasswd.setError("A Password is required!");
+                } else {
+
+                }
+            }
+        });
 
 
     }

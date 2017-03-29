@@ -30,9 +30,9 @@ public class AdapterOffer extends ArrayAdapter<Offer> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.cellule_offer,parent, false);
         }
 
-        OfferViewHolder viewHolder = (OfferViewHolder) convertView.getTag();
+        TweetViewHolder viewHolder = (TweetViewHolder) convertView.getTag();
         if(viewHolder == null){
-            viewHolder = new OfferViewHolder();
+            viewHolder = new TweetViewHolder();
             viewHolder.titre = (TextView) convertView.findViewById(R.id.Titre);
             viewHolder.detail = (TextView) convertView.findViewById(R.id.text);
             viewHolder.avatar = (ImageView) convertView.findViewById(R.id.avatar);
@@ -50,7 +50,7 @@ public class AdapterOffer extends ArrayAdapter<Offer> {
         return convertView;
     }
 
-    private class OfferViewHolder{
+    private class TweetViewHolder{
         public TextView titre;
         public TextView detail;
         public ImageView avatar;

@@ -8,7 +8,7 @@ import android.widget.EditText;
 
 import org.json.JSONException;
 
-public class InscriptionActivity extends AppCompatActivity {
+public class test extends AppCompatActivity {
 
     private EditText login_text, pwd_text;
     private Button valid_inscr;

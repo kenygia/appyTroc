@@ -18,19 +18,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         createUser = (Button) findViewById(R.id.createAccount);
 
-        createUser.setOnClickListener(new createUserPressed());
+        createUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,InscriptionActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
         longin = (Button) findViewById(R.id.login);
         enterPasswd = (EditText) findViewById(R.id.enterPasswd);
         enterUserID = (EditText) findViewById(R.id.enterID);
 
 
     }
-    class createUserPressed implements View.OnClickListener{
-        @Override
-        public void onClick(View v) {
-//            Intent intent = new Intent(MainActivity.this,Inscr)
-//            MainActivity.this.startActivity(intent);
-            System.out.println("yop");
-        }
-    }
+
 }

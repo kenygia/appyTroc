@@ -41,7 +41,7 @@ public class AsyncT extends AsyncTask<Void, Void, Void> {
     protected Void doInBackground(Void... params) {
 
         try {
-            URL url = new URL("http://172.19.162.94/v1/user");
+            URL url = new URL("http://172.19.162.94:8080/v1/user");
 
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 
@@ -55,7 +55,7 @@ public class AsyncT extends AsyncTask<Void, Void, Void> {
 
 
 
-            
+
             DataOutputStream wr = new DataOutputStream(httpURLConnection.getOutputStream());
             wr.writeBytes(jsonObject.toString());
             wr.flush();

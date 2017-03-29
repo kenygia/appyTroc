@@ -1,16 +1,25 @@
 package fr.lille.iut.appytroc;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import org.json.JSONException;
+import org.json.JSONObject;;import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 public class InscriptionActivity extends AppCompatActivity {
 
     private EditText login_text, pwd_text;
     private Button valid_inscr;
+    String login, pwd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,14 +33,20 @@ public class InscriptionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(login_text.getText().toString().equals("") ) {
-                    login_text.setError( "A Login is required!" );
-                } else if (pwd_text.getText().toString().equals("")) {
+                login = login_text.getText().toString();
+                pwd = pwd_text.getText().toString();
+
+                if (login.isEmpty() || login.length() < 4 || login.length() > 100 ) {
+                    login_text.setError("A Login is required!");
+                } else if (pwd.isEmpty() || pwd.length() < 4 || pwd.length() > 64 ) {
                     login_text.setError("A Password is required!");
                 } else {
-
-                    Intent intent = new Intent(InscriptionActivity.this, InscriptionActivity.class);
-                    InscriptionActivity.this.startActivity(intent);
+                    try {
+                        AsyncT async = new AsyncT(new User(login, pwd));
+                        async.execute();
+                    }catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                     finish();
                 }
             }

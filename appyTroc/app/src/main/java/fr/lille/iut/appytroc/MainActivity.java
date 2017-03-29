@@ -32,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
         longin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(enterUserID.getText().toString().equals("") && enterUserID.getText().length()<4) {
+                if(enterUserID.getText().toString().isEmpty() || enterUserID.getText().length()<4) {
                     enterUserID.setError( "A Login is required!" );
-                } else if (enterPasswd.getText().toString().equals("") && enterPasswd.getText().length()<4) {
+                } else if (enterPasswd.getText().toString().isEmpty() || enterPasswd.getText().length()<4) {
                     enterPasswd.setError("A Password is required!");
                 } else {
 

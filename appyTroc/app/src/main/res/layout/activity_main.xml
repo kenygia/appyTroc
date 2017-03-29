@@ -30,6 +30,20 @@
             android:inputType="textPassword"
             />
 
+
+        <Button  style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login"
+
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text=" OR "
+            />
         <Button
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:id="@+id/createAccount"

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.json.JSONException;
 
@@ -37,6 +38,7 @@ public class test extends AppCompatActivity {
                     try {
                         AsyncT async = new AsyncT(new User(login, pwd));
                         async.execute();
+                        Toast.makeText(getApplicationContext(), ""+AsyncT.codereponse+"", Toast.LENGTH_LONG).show();
                     }catch (JSONException e) {
                         e.printStackTrace();
                     }

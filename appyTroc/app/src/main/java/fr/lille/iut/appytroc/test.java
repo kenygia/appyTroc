@@ -17,7 +17,7 @@ public class test extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inscription);
+        setContentView(R.layout.activity_test);
         login_text = (EditText) findViewById(R.id.login_text);
         pwd_text = (EditText) findViewById(R.id.pwd_text);
         valid_inscr = (Button) findViewById(R.id.valid_inscr);

@@ -39,18 +39,30 @@ public class MainActivity extends AppCompatActivity {
         longin.setOnClickListener(new monListener());
 
 
-        enterPasswd.setOnEditorActionListener(new EditText.OnEditorActionListener(){
-
+        enterUserID.setOnEditorActionListener(new EditText.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if(actionId == EditorInfo.IME_ACTION_DONE){
-                    longin.performClick();
+                if (actionId == EditorInfo.IME_ACTION_DONE){
+                    enterUserID.clearFocus();
+                    enterPasswd.requestFocus();
+                    enterPasswd.setCursorVisible(true);
                     return true;
                 }
                 return false;
             }
         });
 
+        enterPasswd.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    longin.performClick();
+                    return true;
+                }
+                return false;
+            }
+        });
 
 
     }

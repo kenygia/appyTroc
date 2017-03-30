@@ -52,6 +52,7 @@
             android:layout_height="wrap_content"
             android:hint="Passwd *****"
             android:inputType="textWebPassword"
+            android:imeOptions="actionDone"
 
             />
 

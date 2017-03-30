@@ -2,6 +2,7 @@ package fr.lille.iut.appytroc;
 
 import android.os.AsyncTask;
 import android.util.Base64;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -62,6 +63,13 @@ public class Asynct extends AsyncTask<Void, Void, Void> {
     }
 
     @Override
+    protected void onPostExecute(Void aVoid) {
+        MainActivity.serverReturnCode = codereponse;
+
+
+    }
+
+    @Override
     protected Void doInBackground(Void... params) {
 
         try {
@@ -90,7 +98,7 @@ public class Asynct extends AsyncTask<Void, Void, Void> {
             wr.close();
 
 
-           codereponse =""+ httpURLConnection.getResponseCode();
+            codereponse =""+ httpURLConnection.getResponseCode();
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -102,4 +110,7 @@ public class Asynct extends AsyncTask<Void, Void, Void> {
         }
         return null;
     }
+
+
+
 }

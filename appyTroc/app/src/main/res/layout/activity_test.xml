@@ -24,6 +24,12 @@
         android:layout_height="wrap_content"
         android:hint="Votre password"
         android:inputType="textPassword"/>
+    <EditText
+        android:id="@+id/pwdVerif_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="retype password"
+        android:inputType="textPassword"/>
 
     <Button
         style="@style/Widget.AppCompat.Button.Borderless.Colored"

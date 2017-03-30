@@ -1,7 +1,7 @@
 package fr.lille.iut.appytroc;
 
 import android.os.AsyncTask;
-import android.widget.Toast;
+import android.util.Base64;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,13 +18,37 @@ import java.net.URL;
 
 public class AsyncTPost extends AsyncTask<Void, Void, Void> {
 
-    JSONObject jsonObject = new JSONObject();
-    public static String codereponse;
+    private String url ="http://";
+    private String methode="UNKNOW";
+    private String baseAuthStr;
+    private String encoded ;
+
+    public String getUrl() {
+        return url;
+    }
+
+    public String getMethode() {
+        return methode;
+    }
+
+    public void setMethode(String methode) {
+        this.methode = methode;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public JSONObject jsonObject = new JSONObject();
+
+    public String codereponse;
 
     public AsyncTPost(User user) throws JSONException{
 
         jsonObject.put("name", user.getName());
         jsonObject.put("password", user.getPwd());
+        baseAuthStr =  user.getName() + ":" + user.getPwd();
+        encoded = Base64.encodeToString(baseAuthStr.getBytes(), Base64.NO_WRAP);
     }
 
     public AsyncTPost(Offer offer) throws JSONException {
@@ -41,15 +65,18 @@ public class AsyncTPost extends AsyncTask<Void, Void, Void> {
     protected Void doInBackground(Void... params) {
 
         try {
-            URL url = new URL("http://172.19.162.94:8080/v1/user");
+            URL url = new URL(this.getUrl());
 
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 
             httpURLConnection.setDoOutput(true);
 
-            httpURLConnection.setRequestMethod("POST");
+            httpURLConnection.setRequestMethod(this.getMethode());
 
             httpURLConnection.setRequestProperty("Content-Type", "application/json");
+            httpURLConnection.addRequestProperty("Authorization", encoded);
+
+
 
             httpURLConnection.connect();
 

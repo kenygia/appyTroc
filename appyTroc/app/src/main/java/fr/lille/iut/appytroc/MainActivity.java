@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         enterUserID.setOnEditorActionListener(new EditText.OnEditorActionListener() {
             @Override
+
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE){
                     enterUserID.clearFocus();
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
 
         enterPasswd.setOnEditorActionListener(new EditText.OnEditorActionListener() {
 
@@ -76,10 +78,12 @@ public class MainActivity extends AppCompatActivity {
                 enterPasswd.setError("A Password is required! min 5 char");
             } else {
                 try {
-                    AsyncTGet async = new AsyncTGet(new User(enterUserID.getText().toString(), enterPasswd.getText().toString()));
-                    async.execute("http://172.19.162.94/v1/login");
-                    //String reponse = async.get().toString();
-                    String reponse = AsyncTGet.jsonString;
+                    AsyncTPost async = new AsyncTPost(new User( enterUserID.getText().toString(),enterPasswd.getText().toString() ));
+                    async.setUrl("http://172.19.162.94:8080/v1/login");
+                    async.setMethode("GET");
+                    async.execute();
+
+                    String reponse = async.codereponse;
 
 
                     Toast.makeText(getApplicationContext(), "je suis la", Toast.LENGTH_LONG).show();

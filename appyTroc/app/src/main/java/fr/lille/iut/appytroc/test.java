@@ -1,7 +1,7 @@
 package fr.lille.iut.appytroc;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,9 +11,9 @@ import org.json.JSONException;
 
 public class test extends AppCompatActivity {
 
-    private EditText login_text, pwd_text;
-    private Button valid_inscr;
     String login, pwd;
+    private EditText login_text, pwd_text, retypePasswd;
+    private Button valid_inscr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,7 @@ public class test extends AppCompatActivity {
         login_text = (EditText) findViewById(R.id.login_text);
         pwd_text = (EditText) findViewById(R.id.pwd_text);
         valid_inscr = (Button) findViewById(R.id.valid_inscr);
-
+        retypePasswd = (EditText) findViewById(R.id.pwdVerif_text);
         valid_inscr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -30,18 +30,19 @@ public class test extends AppCompatActivity {
                 login = login_text.getText().toString();
                 pwd = pwd_text.getText().toString();
 
-                if (login.isEmpty() || login.length() < 4 || login.length() > 100 ) {
+                if (login.isEmpty() || login.length() < 4 || login.length() > 100) {
                     login_text.setError("A Login is required!");
-                } else if (pwd.isEmpty() || pwd.length() < 4 || pwd.length() > 64 ) {
+                } else if (pwd.isEmpty() || pwd.length() < 4 || pwd.length() > 64) {
                     login_text.setError("A Password is required!");
+
                 } else {
                     try {
-                        AsyncT async = new AsyncT(new User(login, pwd));
+                        AsyncTPost async = new AsyncTPost(new User(login, pwd));
                         async.execute();
-                        Toast.makeText(getApplicationContext(), ""+AsyncT.codereponse+"", Toast.LENGTH_LONG).show();
-                    }catch (JSONException e) {
+                        Toast.makeText(getApplicationContext(), "" + AsyncTPost.codereponse + "", Toast.LENGTH_LONG).show();
+                    } catch (JSONException e) {
                         e.printStackTrace();
-                        AsyncT.codereponse = e.toString();
+                        AsyncTGet.codereponse = e.toString();
                     }
                     finish();
                 }

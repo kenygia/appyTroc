@@ -41,7 +41,7 @@ public class test extends AppCompatActivity {
 
                 else {
                     try {
-                        AsyncTPost async = new AsyncTPost(new User(login, pwd));
+                        Asynct async = new Asynct(new User(login, pwd));
                         async.setMethode("POST");
                         async.setUrl("http://172.19.162.94:8080/v1/user");
                         async.execute();

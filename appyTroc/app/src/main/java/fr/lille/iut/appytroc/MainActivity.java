@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 enterPasswd.setError("A Password is required! min 5 char");
             } else {
                 try {
-                    AsyncTPost async = new AsyncTPost(new User( enterUserID.getText().toString(),enterPasswd.getText().toString() ));
+                    Asynct async = new Asynct(new User( enterUserID.getText().toString(),enterPasswd.getText().toString() ));
                     async.setUrl("http://172.19.162.94:8080/v1/login");
                     async.setMethode("GET");
                     async.execute();

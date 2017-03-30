@@ -6,15 +6,15 @@ package fr.lille.iut.appytroc;
 
 public class User {
 
-    private final String login, pwd;
+    private final String name, pwd;
 
     public User( String login, String pwd ) {
-        this.login = login;
+        this.name = login;
         this.pwd = pwd;
     }
 
-    public String getLogin() {
-        return login;
+    public String getName() {
+        return name;
     }
 
     public String getPwd() {

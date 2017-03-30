@@ -23,7 +23,7 @@ public class AsyncT extends AsyncTask<Void, Void, Void> {
 
     public AsyncT(User user) throws JSONException{
 
-        jsonObject.put("login", user.getLogin());
+        jsonObject.put("name", user.getName());
         jsonObject.put("password", user.getPwd());
     }
 

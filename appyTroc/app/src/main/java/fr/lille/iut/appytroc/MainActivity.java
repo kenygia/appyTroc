@@ -2,6 +2,7 @@ package fr.lille.iut.appytroc;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     Button longin;
     EditText enterUserID;
     EditText enterPasswd;
+    static String serverReturnCode="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,12 +85,13 @@ public class MainActivity extends AppCompatActivity {
                     async.setMethode("GET");
                     async.execute();
 
-                    String reponse = async.codereponse;
+                    //serverCodeReponse= async.codereponse;
 
 
-                    Toast.makeText(getApplicationContext(), "je suis la", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "code = " + serverReturnCode, Toast.LENGTH_LONG).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
+
 
                 }
                     /*catch (InterruptedException e) {

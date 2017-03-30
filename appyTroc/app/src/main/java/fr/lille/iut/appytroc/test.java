@@ -41,6 +41,7 @@ public class test extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), ""+AsyncT.codereponse+"", Toast.LENGTH_LONG).show();
                     }catch (JSONException e) {
                         e.printStackTrace();
+                        AsyncT.codereponse = e.toString();
                     }
                     finish();
                 }

@@ -19,7 +19,7 @@ import java.net.URL;
 public class AsyncT extends AsyncTask<Void, Void, Void> {
 
     JSONObject jsonObject = new JSONObject();
-    public static int codereponse;
+    public static String codereponse;
 
     public AsyncT(User user) throws JSONException{
 
@@ -57,17 +57,21 @@ public class AsyncT extends AsyncTask<Void, Void, Void> {
 
 
             DataOutputStream wr = new DataOutputStream(httpURLConnection.getOutputStream());
+
             wr.writeBytes(jsonObject.toString());
             wr.flush();
             wr.close();
 
 
-           codereponse = httpURLConnection.getResponseCode();
+           codereponse =""+ httpURLConnection.getResponseCode();
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
+            codereponse= e.toString();
+
         } catch (IOException e) {
             e.printStackTrace();
+            codereponse= e.toString();
         }
         return null;
     }

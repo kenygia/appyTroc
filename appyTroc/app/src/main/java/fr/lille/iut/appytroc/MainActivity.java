@@ -6,6 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import org.json.JSONException;
+
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
     Button createUser;
@@ -37,8 +42,25 @@ public class MainActivity extends AppCompatActivity {
                 } else if (enterPasswd.getText().toString().isEmpty() || (enterPasswd.getText().length()<4 && enterPasswd.getText().length()<64)) {
                     enterPasswd.setError("A Password is required! min 5 char");
                 } else {
+                    try {
+                        AsyncTGet async = new AsyncTGet(new User( enterUserID.getText().toString(),enterPasswd.getText().toString() ));
+                        async.execute("http://172.19.162.94/v1/login");
+                        String reponse = async.get().toString();
 
+
+                        Toast.makeText(getApplicationContext(), "connection", Toast.LENGTH_LONG).show();
+                    }catch (JSONException e) {
+                        e.printStackTrace();
+
+                    }
+                    catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    catch (ExecutionException e) {
+                        e.printStackTrace();
+                    }
                 }
+
             }
         });
 

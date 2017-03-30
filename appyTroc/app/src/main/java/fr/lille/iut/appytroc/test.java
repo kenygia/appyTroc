@@ -1,6 +1,5 @@
 package fr.lille.iut.appytroc;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -43,8 +42,10 @@ public class test extends AppCompatActivity {
                 else {
                     try {
                         AsyncTPost async = new AsyncTPost(new User(login, pwd));
+                        async.setMethode("POST");
+                        async.setUrl("http://172.19.162.94:8080/v1/user");
                         async.execute();
-                        Toast.makeText(getApplicationContext(), "" + AsyncTPost.codereponse + "", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "" + async.codereponse + "", Toast.LENGTH_LONG).show();
                     } catch (JSONException e) {
                         e.printStackTrace();
 //                        AsyncTGet.codereponse = e.toString();

@@ -1,5 +1,6 @@
 package fr.lille.iut.appytroc;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -33,9 +34,13 @@ public class test extends AppCompatActivity {
                 if (login.isEmpty() || login.length() < 4 || login.length() > 100) {
                     login_text.setError("A Login is required!");
                 } else if (pwd.isEmpty() || pwd.length() < 4 || pwd.length() > 64) {
-                    login_text.setError("A Password is required!");
+                    pwd_text.setError("A Password is required!");
 
-                } else {
+                }else if(retypePasswd.getText().toString().isEmpty() || (!retypePasswd.getText().toString().equals(pwd))){
+                    retypePasswd.setError("passwd is different !");
+                }
+
+                else {
                     try {
                         AsyncTPost async = new AsyncTPost(new User(login, pwd));
                         async.execute();

@@ -1,6 +1,7 @@
 package fr.lille.iut.appytroc;
 
 import android.os.AsyncTask;
+import android.util.Base64;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -40,6 +41,8 @@ public class AsyncTGet extends AsyncTask<String, Void, Void> {
     @Override
     protected Void doInBackground(String... url) {
 
+        final String basicAuth = "Basic " + Base64.encodeToString("name:password".getBytes(), Base64.NO_WRAP);
+
         try {
             URL lien = new URL(url[0]);
 
@@ -48,6 +51,8 @@ public class AsyncTGet extends AsyncTask<String, Void, Void> {
             httpURLConnection.setDoOutput(true);
 
             httpURLConnection.setRequestMethod("GET");
+
+            httpURLConnection.setRequestProperty ("Authorization", basicAuth);
 
             httpURLConnection.setRequestProperty("Content-Type", "application/json");
 

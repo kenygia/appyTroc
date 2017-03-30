@@ -2,11 +2,7 @@ package fr.lille.iut.appytroc;
 
 import android.os.AsyncTask;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -17,28 +13,15 @@ import java.net.URL;
  * Created by tibo on 30/03/17.
  */
 
-public class AsyncTGet extends AsyncTask<Void, Void, Void> {
-
-    public static String codereponse;
-
-    public AsyncTGet(User user) throws JSONException {
-
-
-
-    }
-
-    public AsyncTGet(Offer offer) throws JSONException {
-
-
-    }
+public class AsyncTGet extends AsyncTask<String, Void, Void> {
 
     @Override
-    protected Void doInBackground(Void... params) {
+    protected Void doInBackground(String... url) {
 
         try {
-            URL url = new URL("http://172.19.162.94:8080/v1/user");
+            URL lien = new URL(url[0]);
 
-            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+            HttpURLConnection httpURLConnection = (HttpURLConnection) lien.openConnection();
 
             httpURLConnection.setDoOutput(true);
 
@@ -48,7 +31,7 @@ public class AsyncTGet extends AsyncTask<Void, Void, Void> {
 
             httpURLConnection.connect();
 
-            BufferedReader br=new BufferedReader(new InputStreamReader(url.openStream()));
+            BufferedReader br = new BufferedReader(new InputStreamReader(lien.openStream()));
 
             char[] buffer = new char[1024];
 
@@ -56,22 +39,18 @@ public class AsyncTGet extends AsyncTask<Void, Void, Void> {
 
             StringBuilder sb = new StringBuilder();
             String line;
-            while ((line = br.readLine()) != null) {
-                sb.append(line+"\n");
+            while ((line = br.readLine()) != null ) {
+                sb.append(line + "\n");
             }
             br.close();
 
             jsonString = sb.toString();
 
-            codereponse =""+ httpURLConnection.getResponseCode();
-
+            return null;
         } catch (MalformedURLException e) {
             e.printStackTrace();
-            codereponse= e.toString();
-
         } catch (IOException e) {
             e.printStackTrace();
-            codereponse= e.toString();
         }
         return null;
     }

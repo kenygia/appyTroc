@@ -34,7 +34,7 @@ public class test extends AppCompatActivity {
                 if (login.isEmpty() || login.length() < 4 || login.length() > 100) {
                     login_text.setError("A Login is required!");
                 } else if (pwd.isEmpty() || pwd.length() < 4 || pwd.length() > 64) {
-                    pwd_text.setError("A Password is required!");
+                    pwd_text.setError("A Password is required!"); //    
 
                 }else if(retypePasswd.getText().toString().isEmpty() || (!retypePasswd.getText().toString().equals(pwd))){
                     retypePasswd.setError("passwd is different !");

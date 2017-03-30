@@ -1,39 +1,34 @@
 package fr.lille.iut.appytroc;
 
 import android.os.AsyncTask;
-import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * Created by tibo on 29/03/17.
+ * Created by tibo on 30/03/17.
  */
 
-public class AsyncT extends AsyncTask<Void, Void, Void> {
+public class AsyncTGet extends AsyncTask<Void, Void, Void> {
 
-    JSONObject jsonObject = new JSONObject();
     public static String codereponse;
 
-    public AsyncT(User user) throws JSONException{
+    public AsyncTGet(User user) throws JSONException {
 
-        jsonObject.put("name", user.getName());
-        jsonObject.put("password", user.getPwd());
+
+
     }
 
-    public AsyncT(Offer offer) throws JSONException {
+    public AsyncTGet(Offer offer) throws JSONException {
 
-        jsonObject.put("id", offer.getId());
-        jsonObject.put("id_user", offer.getId_user());
-        jsonObject.put("titre", offer.getTitre());
-        jsonObject.put("detail", offer.getDetail());
-        jsonObject.put("active", offer.isActive());
 
     }
 
@@ -47,23 +42,28 @@ public class AsyncT extends AsyncTask<Void, Void, Void> {
 
             httpURLConnection.setDoOutput(true);
 
-            httpURLConnection.setRequestMethod("POST");
+            httpURLConnection.setRequestMethod("GET");
 
             httpURLConnection.setRequestProperty("Content-Type", "application/json");
 
             httpURLConnection.connect();
 
+            BufferedReader br=new BufferedReader(new InputStreamReader(url.openStream()));
 
+            char[] buffer = new char[1024];
 
+            String jsonString = new String();
 
-            DataOutputStream wr = new DataOutputStream(httpURLConnection.getOutputStream());
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = br.readLine()) != null) {
+                sb.append(line+"\n");
+            }
+            br.close();
 
-            wr.writeBytes(jsonObject.toString());
-            wr.flush();
-            wr.close();
+            jsonString = sb.toString();
 
-
-           codereponse =""+ httpURLConnection.getResponseCode();
+            codereponse =""+ httpURLConnection.getResponseCode();
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -76,3 +76,4 @@ public class AsyncT extends AsyncTask<Void, Void, Void> {
         return null;
     }
 }
+

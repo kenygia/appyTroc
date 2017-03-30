@@ -45,20 +45,20 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         AsyncTGet async = new AsyncTGet(new User( enterUserID.getText().toString(),enterPasswd.getText().toString() ));
                         async.execute("http://172.19.162.94/v1/login");
-                        String reponse = async.get().toString();
+                        //String reponse = async.get().toString();
 
 
-                        Toast.makeText(getApplicationContext(), "connection", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "je suis la", Toast.LENGTH_LONG).show();
                     }catch (JSONException e) {
                         e.printStackTrace();
 
                     }
-                    catch (InterruptedException e) {
+                    /*catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                     catch (ExecutionException e) {
                         e.printStackTrace();
-                    }
+                    }*/
                 }
 
             }

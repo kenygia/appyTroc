@@ -18,7 +18,7 @@ import java.net.URL;
  */
 
 public class AsyncTGet extends AsyncTask<String, Void, Void> {
-
+    private  String basicAuth;
     JSONObject jsonObject = new JSONObject();
     public static String codereponse;
 
@@ -26,6 +26,7 @@ public class AsyncTGet extends AsyncTask<String, Void, Void> {
 
         jsonObject.put("name", user.getName());
         jsonObject.put("password", user.getPwd());
+        basicAuth = "Basic " + Base64.encodeToString((""+user.getName()+":"+user.getPwd()+"").getBytes(), Base64.NO_WRAP);
     }
 
     public AsyncTGet(Offer offer) throws JSONException {
@@ -36,12 +37,13 @@ public class AsyncTGet extends AsyncTask<String, Void, Void> {
         jsonObject.put("detail", offer.getDetail());
         jsonObject.put("active", offer.isActive());
 
+
     }
 
     @Override
     protected Void doInBackground(String... url) {
 
-        final String basicAuth = "Basic " + Base64.encodeToString("name:password".getBytes(), Base64.NO_WRAP);
+
 
         try {
             URL lien = new URL(url[0]);

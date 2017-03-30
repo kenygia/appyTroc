@@ -2,6 +2,9 @@ package fr.lille.iut.appytroc;
 
 import android.os.AsyncTask;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -14,6 +17,25 @@ import java.net.URL;
  */
 
 public class AsyncTGet extends AsyncTask<String, Void, Void> {
+
+    JSONObject jsonObject = new JSONObject();
+    public static String codereponse;
+
+    public AsyncTGet(User user) throws JSONException {
+
+        jsonObject.put("name", user.getName());
+        jsonObject.put("password", user.getPwd());
+    }
+
+    public AsyncTGet(Offer offer) throws JSONException {
+
+        jsonObject.put("id", offer.getId());
+        jsonObject.put("id_user", offer.getId_user());
+        jsonObject.put("titre", offer.getTitre());
+        jsonObject.put("detail", offer.getDetail());
+        jsonObject.put("active", offer.isActive());
+
+    }
 
     @Override
     protected Void doInBackground(String... url) {

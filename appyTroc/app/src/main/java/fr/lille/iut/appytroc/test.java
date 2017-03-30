@@ -42,7 +42,7 @@ public class test extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "" + AsyncTPost.codereponse + "", Toast.LENGTH_LONG).show();
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        AsyncTGet.codereponse = e.toString();
+//                        AsyncTGet.codereponse = e.toString();
                     }
                     finish();
                 }

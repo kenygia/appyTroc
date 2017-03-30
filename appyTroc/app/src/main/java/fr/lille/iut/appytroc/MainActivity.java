@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
                         AsyncTGet async = new AsyncTGet(new User( enterUserID.getText().toString(),enterPasswd.getText().toString() ));
                         async.execute("http://172.19.162.94/v1/login");
                         //String reponse = async.get().toString();
+                        String reponse = AsyncTGet.jsonString;
+                        
 
 
                         Toast.makeText(getApplicationContext(), "je suis la", Toast.LENGTH_LONG).show();

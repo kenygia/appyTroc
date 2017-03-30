@@ -19,6 +19,9 @@ import java.net.URL;
 
 public class AsyncTGet extends AsyncTask<String, Void, Void> {
     private  String basicAuth;
+
+    static             String jsonString = new String();
+
     JSONObject jsonObject = new JSONObject();
     public static String codereponse;
 
@@ -64,7 +67,6 @@ public class AsyncTGet extends AsyncTask<String, Void, Void> {
 
             char[] buffer = new char[1024];
 
-            String jsonString = new String();
 
             StringBuilder sb = new StringBuilder();
             String line;

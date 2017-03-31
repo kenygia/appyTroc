@@ -16,6 +16,7 @@
         android:id="@+id/login_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:imeOptions="actionDone"
         android:hint="Votre login" />
 
     <EditText
@@ -23,12 +24,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Votre password"
+        android:imeOptions="actionDone"
         android:inputType="textPassword"/>
     <EditText
         android:id="@+id/pwdVerif_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="retype password"
+        android:imeOptions="actionDone"
         android:inputType="textPassword"/>
 
     <Button

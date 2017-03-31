@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="fr.lille.iut.appytroc">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,9 +20,9 @@
 
             <activity android:name=".InscriptionActivity" />
         </activity>
-        <activity android:name=".UserRegister"></activity>
-        <activity android:name=".OfferAllActivity"></activity>
+        <activity android:name=".UserRegister" />
+        <activity android:name=".OfferAllActivity" />
+        <activity android:name=".CreateOfferActivity"></activity>
     </application>
-
 
 </manifest>

@@ -12,47 +12,47 @@ import android.widget.TextView;
 
 import java.util.List;
 
+
 /**
- * Created by thibault on 29/03/2017.
+ * Created by caroenk on 23/03/17.
  */
 
 public class AdapterOffer extends ArrayAdapter<Offer> {
 
-    //tweets est la liste des models à afficher
-    public AdapterOffer(Context context, List<Offer> Offers) {
-        super(context, 0, Offers);
+    private OfferViewHolder viewHolder;
+
+    public AdapterOffer(Context context, List<Offer> offers) {
+        super(context, 0, offers);
     }
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, final ViewGroup parent) {
 
-        if(convertView == null){
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.cellule_offer,parent, false);
+
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.cellule_offer, parent, false);
         }
 
-        TweetViewHolder viewHolder = (TweetViewHolder) convertView.getTag();
-        if(viewHolder == null){
-            viewHolder = new TweetViewHolder();
+        OfferViewHolder viewHolder = (OfferViewHolder) convertView.getTag();
+        if (viewHolder == null) {
+            viewHolder = new OfferViewHolder();
             viewHolder.titre = (TextView) convertView.findViewById(R.id.Titre);
-            viewHolder.detail = (TextView) convertView.findViewById(R.id.text);
+            viewHolder.details = (TextView) convertView.findViewById(R.id.detail);
             viewHolder.avatar = (ImageView) convertView.findViewById(R.id.avatar);
             convertView.setTag(viewHolder);
         }
 
-        //getItem(position) va récupérer l'item [position] de la List<Tweet> tweets
         Offer offer = getItem(position);
-
-        //il ne reste plus qu'à remplir notre vue
-        viewHolder. titre.setText(offer.getTitre());
-        viewHolder.detail.setText(offer.getDetail());
+        viewHolder.titre.setText(offer.getTitre().toString());
+        viewHolder.details.setText(offer.getDetail().toString());
         viewHolder.avatar.setImageDrawable(new ColorDrawable(Color.BLUE));
 
         return convertView;
     }
 
-    private class TweetViewHolder{
+    public class OfferViewHolder {
+
         public TextView titre;
-        public TextView detail;
+        public TextView details;
         public ImageView avatar;
     }
 }

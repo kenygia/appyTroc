@@ -1,6 +1,7 @@
 package fr.lille.iut.appytroc;
 
 import android.content.Context;
+import android.content.Intent;
 
 /**
  * Created by thibault on 30/03/2017.
@@ -25,7 +26,8 @@ public class Message {
     }
 
     public void exec() {
-
+        Intent intent = new Intent(this.context, OfferAllActivity.class);
+        this.context.startActivity(intent);
 
             }
 }

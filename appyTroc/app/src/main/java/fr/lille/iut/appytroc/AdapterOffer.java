@@ -32,7 +32,7 @@ public class AdapterOffer extends ArrayAdapter<Offer> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.cellule_offer, parent, false);
         }
 
-        OfferViewHolder viewHolder = (OfferViewHolder) convertView.getTag();
+        viewHolder = (OfferViewHolder) convertView.getTag();
         if (viewHolder == null) {
             viewHolder = new OfferViewHolder();
             viewHolder.titre = (TextView) convertView.findViewById(R.id.Titre);

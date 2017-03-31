@@ -52,18 +52,13 @@ public class OfferAllActivity extends AppCompatActivity {
 
         JSONObject jso = new JSONObject();
 
-        try {
             Asynct async = new Asynct();
-            async.setUrl("http://172.19.162.94:8080/v1/login");
+            async.setUrl("http://172.19.162.94:8080/v1/offer/all");
             async.setMethode("GET");
             async.execute();
 
             String reponse = async.codereponse;
 
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
         return jso;
     }
 }

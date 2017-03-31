@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     EditText enterPasswd;
     static String serverReturnCode="";
 
+    Button show;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +39,17 @@ public class MainActivity extends AppCompatActivity {
         longin = (Button) findViewById(R.id.login);
         enterPasswd = (EditText) findViewById(R.id.enterPasswd);
         enterUserID = (EditText) findViewById(R.id.enterID);
+
+
+        show = (Button) findViewById(R.id.show);
+        show.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, OfferAllActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+
 
         longin.setOnClickListener(new monListener());
 

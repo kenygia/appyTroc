@@ -81,11 +81,17 @@
             android:text="Create account"
 
             />
-        <Button
+        <Button style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:id="@+id/show"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="show offers"/>
+        <Button style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="add Offer"
+            android:id="@+id/addOffer"
+            />
 
     </LinearLayout>
 

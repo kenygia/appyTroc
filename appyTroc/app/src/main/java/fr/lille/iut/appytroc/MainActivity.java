@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     EditText enterUserID;
     EditText enterPasswd;
     static String serverReturnCode = "";
+    Button addOffer;
 
 
     Button show;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         enterUserID = (EditText) findViewById(R.id.enterID);
         longin = (Button) findViewById(R.id.login);
         show = (Button) findViewById(R.id.show);
+        addOffer = (Button) findViewById(R.id.addOffer);
 
 
         createUser.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +89,18 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        addOffer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CreateOfferActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+
+
+
+
 
 
     }

@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.widget.ListView;
 
 
@@ -74,7 +75,7 @@ public class OfferAllActivity extends AppCompatActivity {
 
 
             OfferAsynct async = new OfferAsynct();
-            async.setUrl("http://172.19.162.94:8080/v1/offer/all");
+            async.setUrl("http://osmar.io:8080/v1/offer/all");
 
             async.setMethode("GET");
             async.execute();
@@ -158,8 +159,8 @@ public class OfferAllActivity extends AppCompatActivity {
                 String line;
                 while ((line = reader.readLine()) != null) {
                     result += line;
-                }
 
+                }
 
 
 
@@ -167,12 +168,14 @@ public class OfferAllActivity extends AppCompatActivity {
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
-                result = e.getMessage();
+                result = "MalformedURLException";
 
             } catch (IOException e) {
                 e.printStackTrace();
-                result = e.getMessage();
+                result = "IOException";
             }
+            Log.i("Res_result", result);
+
             return result;
         }
 

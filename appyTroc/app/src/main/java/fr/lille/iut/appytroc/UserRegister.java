@@ -2,9 +2,12 @@ package fr.lille.iut.appytroc;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -23,6 +26,47 @@ public class UserRegister extends AppCompatActivity {
         pwd_text = (EditText) findViewById(R.id.pwd_text);
         valid_inscr = (Button) findViewById(R.id.valid_inscr);
         retypePasswd = (EditText) findViewById(R.id.pwdVerif_text);
+
+        login_text.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+            @Override
+
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    login_text.clearFocus();
+                    pwd_text.requestFocus();
+                    pwd_text.setCursorVisible(true);
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        pwd_text.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+            @Override
+
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    pwd_text.clearFocus();
+                    retypePasswd.requestFocus();
+                    retypePasswd.setCursorVisible(true);
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        retypePasswd.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+            @Override
+
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    valid_inscr.performClick();
+                    return true;
+                }
+                return false;
+            }
+        });
+
         valid_inscr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

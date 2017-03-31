@@ -1,5 +1,6 @@
 package fr.lille.iut.appytroc;
 
+import android.app.Notification;
 import android.os.AsyncTask;
 import android.util.Base64;
 import android.widget.Toast;
@@ -19,17 +20,17 @@ import java.net.URL;
 
 public class Asynct extends AsyncTask<Void, Void, Void> {
 
-    private String url ="http://";
-    private String methode="UNKNOW";
+    private String url = "http://";
+    private String methode = "UNKNOW";
     private String baseAuthStr;
-    private String encoded ;
-    private Message message;
+    private String encoded;
+    private ActionInterface message;
 
-    public Message getMessage() {
+    public ActionInterface getMessage() {
         return message;
     }
 
-    public void setMessage(Message message) {
+    public void setMessage(ActionInterface message) {
         this.message = message;
     }
 
@@ -53,22 +54,27 @@ public class Asynct extends AsyncTask<Void, Void, Void> {
 
     public String codereponse;
 
-    public Asynct(User user) throws JSONException{
+    public Asynct(User user) throws JSONException {
 
         jsonObject.put("name", user.getName());
         jsonObject.put("password", user.getPwd());
-        baseAuthStr =  user.getName() + ":" + user.getPwd();
+        baseAuthStr = user.getName() + ":" + user.getPwd();
+        message = null;
         encoded = Base64.encodeToString(baseAuthStr.getBytes(), Base64.NO_WRAP);
     }
- public Asynct(){
-     baseAuthStr =  "android:android";
-     encoded = Base64.encodeToString(baseAuthStr.getBytes(), Base64.NO_WRAP);
- }
+
+    public Asynct() {
+        baseAuthStr = "android:android";
+        encoded = Base64.encodeToString(baseAuthStr.getBytes(), Base64.NO_WRAP);
+        message = null;
+    }
 
     @Override
     protected void onPostExecute(Void aVoid) {
-        MainActivity.serverReturnCode = codereponse;
-        message.exec();
+
+        if (message != null) {
+            message.exec();
+        }
 
     }
 
@@ -88,10 +94,7 @@ public class Asynct extends AsyncTask<Void, Void, Void> {
             httpURLConnection.addRequestProperty("Authorization", encoded);
 
 
-
             httpURLConnection.connect();
-
-
 
 
             DataOutputStream wr = new DataOutputStream(httpURLConnection.getOutputStream());
@@ -101,19 +104,18 @@ public class Asynct extends AsyncTask<Void, Void, Void> {
             wr.close();
 
 
-            codereponse =""+ httpURLConnection.getResponseCode();
+            codereponse = "" + httpURLConnection.getResponseCode();
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
-            codereponse= e.toString();
+            codereponse = e.toString();
 
         } catch (IOException e) {
             e.printStackTrace();
-            codereponse= e.toString();
+            codereponse = e.toString();
         }
         return null;
     }
-
 
 
 }

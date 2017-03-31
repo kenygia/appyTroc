@@ -68,7 +68,8 @@ public class Asynct extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         MainActivity.serverReturnCode = codereponse;
-        message.exec();
+
+       // message.exec();
 
     }
 

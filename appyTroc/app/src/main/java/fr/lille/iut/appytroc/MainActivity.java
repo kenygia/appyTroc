@@ -98,14 +98,18 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 try {
                     Asynct async = new Asynct(new User( enterUserID.getText().toString(),enterPasswd.getText().toString() ));
-                    async.setUrl("http://172.19.162.94:8080/v1/login");
+                    async.setUrl("http://osmar.io:8080/v1/login");
                     async.setMethode("GET");
                     async.execute();
 
-                    System.out.print(async.getStatus().toString());
+
+
+                   // while(async.getStatus() != AsyncTask.Status.FINISHED);
+                    Toast.makeText(getApplicationContext(), "code = " + serverReturnCode, Toast.LENGTH_LONG).show();
+
                     //serverCodeReponse= async.codereponse;
 
-                    Toast.makeText(getApplicationContext(), "code = " + serverReturnCode, Toast.LENGTH_LONG).show();
+
                 } catch (JSONException e) {
                     e.printStackTrace();
 

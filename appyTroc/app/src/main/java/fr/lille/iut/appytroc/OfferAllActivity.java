@@ -53,7 +53,7 @@ public class OfferAllActivity extends AppCompatActivity {
         JSONObject jso = new JSONObject();
 
             Asynct async = new Asynct();
-            async.setUrl("http://172.19.162.94:8080/v1/offer/all");
+            async.setUrl("http://osmar.io:8080/v1/offer/all");
             async.setMethode("GET");
             async.execute();
 

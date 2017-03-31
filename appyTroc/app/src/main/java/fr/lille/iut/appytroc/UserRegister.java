@@ -43,7 +43,7 @@ public class UserRegister extends AppCompatActivity {
                     try {
                         Asynct async = new Asynct(new User(login, pwd));
                         async.setMethode("POST");
-                        async.setUrl("http://172.19.162.94:8080/v1/user");
+                        async.setUrl("http://osmar.io:8080/v1/user");
                         async.execute();
                         Toast.makeText(getApplicationContext(), "" + async.codereponse + "", Toast.LENGTH_LONG).show();
                     } catch (JSONException e) {

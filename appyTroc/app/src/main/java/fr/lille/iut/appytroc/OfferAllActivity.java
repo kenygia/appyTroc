@@ -62,7 +62,7 @@ public class OfferAllActivity extends AppCompatActivity {
                 String titre = c.getString("titre");
                 String detail = c.getString("detail");
                 boolean active = c.getBoolean("active");
-                
+
                 list_offer.add(new Offer(id,id_user,titre,detail));
             }
         } catch (JSONException e) {

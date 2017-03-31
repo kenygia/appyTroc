@@ -1,6 +1,7 @@
 package fr.lille.iut.appytroc;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
@@ -101,8 +102,8 @@ public class MainActivity extends AppCompatActivity {
                     async.setMethode("GET");
                     async.execute();
 
+                    System.out.print(async.getStatus().toString());
                     //serverCodeReponse= async.codereponse;
-
 
                     Toast.makeText(getApplicationContext(), "code = " + serverReturnCode, Toast.LENGTH_LONG).show();
                 } catch (JSONException e) {

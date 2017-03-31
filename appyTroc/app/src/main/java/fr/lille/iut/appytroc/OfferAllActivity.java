@@ -27,13 +27,15 @@ import java.util.concurrent.ExecutionException;
 public class OfferAllActivity extends AppCompatActivity {
 
     ListView mListView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_offer_all);
         mListView = (ListView) findViewById(R.id.mListView);
         List<Offer> offers = new ArrayList<>();
+
+        offers.add(new Offer( 1,1,"The company","we sold it to and that way it comes under the monthly current budget and not the capital account"));
+        offers.add(new Offer( 2,2,"A roman mum","I'm a kike, a yid, a heebie, a hook-nose, I'm kosher mum, I'm a Red Sea pedestrian, and proud of it!"));
         try {
             offers = generateOffers(getAllOffer());
         } catch (ExecutionException e) {
@@ -60,7 +62,7 @@ public class OfferAllActivity extends AppCompatActivity {
                 String titre = c.getString("titre");
                 String detail = c.getString("detail");
                 boolean active = c.getBoolean("active");
-
+                
                 list_offer.add(new Offer(id,id_user,titre,detail));
             }
         } catch (JSONException e) {

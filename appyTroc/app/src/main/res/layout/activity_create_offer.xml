@@ -12,21 +12,17 @@
     android:orientation="vertical"
     tools:context="fr.lille.iut.appytroc.CreateOfferActivity">
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_menu_camera"
-        android:id="@+id/imageButton"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="DESCRiPTION :"
+        android:id="@+id/TextViewDescription"
         />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/EditTextDescription"
         />
 
 

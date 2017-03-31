@@ -99,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
                 enterPasswd.setError("A Password is required! min 5 char");
             } else {
                 try {
+
                     MainAsynct async = new MainAsynct(new User(enterUserID.getText().toString(), enterPasswd.getText().toString()));
                     async.setUrl("http://osmar.io:8080/v1/login");
                     async.setMethode("GET");
@@ -112,8 +113,6 @@ public class MainActivity extends AppCompatActivity {
                     else{
                         Toast.makeText(MainActivity.this,""+serverCodeReponse,Toast.LENGTH_LONG).show();
                     }
-
-
 
                 } catch (JSONException e) {
                     e.printStackTrace();

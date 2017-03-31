@@ -72,8 +72,10 @@ public class OfferAllActivity extends AppCompatActivity {
 
 
 
+
             OfferAsynct async = new OfferAsynct();
             async.setUrl("http://172.19.162.94:8080/v1/offer/all");
+
             async.setMethode("GET");
             async.execute();
             String reponse = async.get();

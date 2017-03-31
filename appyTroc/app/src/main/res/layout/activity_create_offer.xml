@@ -12,19 +12,61 @@
     android:orientation="vertical"
     tools:context="fr.lille.iut.appytroc.CreateOfferActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TITRE :"
+        android:id="@+id/TextVIewTitre"
+        android:textSize="24sp"
+        android:textAllCaps="false"
+        android:textStyle="normal|bold" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/EditTextTitre"
+        android:inputType="textShortMessage"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:hint="enter here..."
+        />
+
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="DESCRiPTION :"
         android:id="@+id/TextViewDescription"
-        />
+        android:textSize="24sp"
+        android:textAllCaps="false"
+        android:textStyle="normal|bold" />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/EditTextDescription"
+        android:inputType="textShortMessage"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:hint="enter here..."
         />
 
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_menu_camera"
+        android:id="@+id/imageButton"
+        android:elevation="0dp"
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        />
 
+<Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/submit"
+    android:text="Submit !"
+    />
 
 </LinearLayout>

@@ -20,12 +20,15 @@ public class MainActivity extends AppCompatActivity {
     EditText enterUserID;
     EditText enterPasswd;
     static String serverReturnCode="";
+    Message message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        message= new Message();
         createUser = (Button) findViewById(R.id.createAccount);
+
 
         createUser.setOnClickListener(new View.OnClickListener() {
             @Override

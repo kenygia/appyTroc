@@ -60,22 +60,16 @@ public class Asynct extends AsyncTask<Void, Void, Void> {
         baseAuthStr =  user.getName() + ":" + user.getPwd();
         encoded = Base64.encodeToString(baseAuthStr.getBytes(), Base64.NO_WRAP);
     }
-
-    public Asynct(Offer offer) throws JSONException {
-
-        jsonObject.put("id", offer.getId());
-        jsonObject.put("id_user", offer.getId_user());
-        jsonObject.put("titre", offer.getTitre());
-        jsonObject.put("detail", offer.getDetail());
-        jsonObject.put("active", offer.isActive());
-
+    public Asynct(){
+        baseAuthStr =  "android:android";
+        encoded = Base64.encodeToString(baseAuthStr.getBytes(), Base64.NO_WRAP);
     }
 
     @Override
     protected void onPostExecute(Void aVoid) {
-
         MainActivity.serverReturnCode = codereponse;
-        message.exec();
+
+       // message.exec();
 
     }
 

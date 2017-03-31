@@ -32,7 +32,7 @@ public class OfferAllActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_offer_all);
         mListView = (ListView) findViewById(R.id.mListView);
-        List<Offer> offers = null;
+        List<Offer> offers = new ArrayList<>();
         try {
             offers = generateOffers(getAllOffer());
         } catch (ExecutionException e) {

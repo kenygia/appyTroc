@@ -23,6 +23,15 @@ public class Asynct extends AsyncTask<Void, Void, Void> {
     private String methode="UNKNOW";
     private String baseAuthStr;
     private String encoded ;
+    private Message message;
+
+    public Message getMessage() {
+        return message;
+    }
+
+    public void setMessage(Message message) {
+        this.message = message;
+    }
 
     public String getUrl() {
         return url;
@@ -66,7 +75,7 @@ public class Asynct extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void aVoid) {
 
         MainActivity.serverReturnCode = codereponse;
-
+        message.exec();
 
     }
 

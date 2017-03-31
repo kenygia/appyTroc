@@ -1,23 +1,31 @@
 package fr.lille.iut.appytroc;
 
+import android.content.Context;
+
 /**
  * Created by thibault on 30/03/2017.
  */
 
 public class Message {
-    private String message;
+
+    private Context context;
 
 
-    public Message(){this.message="";}
-    public Message(String message){
-        this.message= message;
+
+    public Message(Context message){
+        this.context= message;
     }
 
-    public String getMessage() {
-        return message;
+    public Context getContext() {
+        return context;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setContext(Context context) {
+        this.context = context;
     }
+
+    public void exec() {
+
+
+            }
 }

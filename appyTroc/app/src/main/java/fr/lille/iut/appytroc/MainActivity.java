@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        message= new Message();
+     //   message= new Message();
         createUser = (Button) findViewById(R.id.createAccount);
 
 
